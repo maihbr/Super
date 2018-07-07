@@ -1,0 +1,43 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{APP_NAME}}</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">           
+           
+            <li class="dropdown">
+            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ficha de datos <span class="caret"></span></a>
+            	<ul class="dropdown-menu" role="menu"> 
+            		<li><a [routerLink]="['/lispedidos']" id="HtmlLnkPedidos">Crear pedido...</a></li>
+                 <li class="divider"></li>
+                 
+                  <li><a [routerLink]="['/productos']" id="HtmlLnkProductos">Productos...</a></li>
+                  <li><a [routerLink]="['/categorias']" id="HtmlLnkCategorias">Categorias...</a></li>
+            	</ul>
+            </li>
+
+             <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">Herramientas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                                    
+                 <li><a [routerLink]="['/importar']" id="HtmlLnkImportar">Importar Datos</a></li>
+                 <li><a [routerLink]="['/exportar']" id="HtmlLnkExportar">Exportar Datos</a></li>
+                 <!--<li class="divider"></li>
+                 <li><a [routerLink]="['/exportar-firebase']" id="HtmlLnkExportFirebase">Exportar a Firebase...</a></li>
+                 <li id="HtmlLnkSetup"><a [routerLink]="['/configuracion']">Configuracion...</a></li>-->
+              </ul>
+            </li>
+          </ul>
+         
+        </div><!--/.nav-collapse -->
+      </div>
+</div>
+
+
+  <router-outlet></router-outlet>

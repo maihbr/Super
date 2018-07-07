@@ -1,0 +1,81 @@
+<div bsModal #childModal="bs-modal" tabindex="-1" class="modal fade">
+  
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header bg-primary">
+              <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><h4 class="modal-title">{{Cabecera}}</h4></div>   
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">  
+                        <div class="cursor" (click)="onShowCart_Click()">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="badge">{{_NumProductos}}</span>  
+                        </div>                                                                                 
+                    </div>              
+                </div>
+            </div>
+
+          <div class="modal-body">
+              <div class="text-center">{{Mensaje}}</div>
+              
+              <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
+                        <select id="HtmlCboCategoria" class="form-control" [(ngModel)]="HtmlCboCategoria">
+                          <option *ngFor="let categoria of _Categorias" 
+                           [value]="categoria.id">{{categoria.nombre}}</option>
+                        </select>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                      <input type="search" name="HtmlProducto" class="form-control" placeholder="Producto" [(ngModel)]="HtmlProducto" />
+                  </div>    
+
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                      <input type="button" class="btn btn-default" value="Buscar" (click)="BtnBuscar_Click()">
+                  </div>
+              </div>
+
+              <form #listProd="ngForm" (ngSubmit)="onSubmit(listProd.value)" >
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">                                        
+                      <table class="table">
+                          <thead>
+                              <tr>                                  
+                                  <th>Cantidad</th>
+                                  <th>Producto</th>
+                                  <th>P.V.P</th>
+                                  <th>Importe</th>
+                                  <th>&nbsp;</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                               <!-- |pipeProductos:HtmlProducto -->
+                                <tr *ngFor="let producto of _Productos|pipeProductos:HtmlProducto;let i=index">                                    
+                                    <td><input type="number" name="pro_{{producto.id}}"  step="1" min="0" max="99"  class="text-center"
+                                             (input)="onInput($event)"  (value)="producto.cantidad" [attr.data-id]="producto.id"  #cantidad [(ngModel)]="producto.cantidad" ></td>
+                                    <td>{{producto.id}} - {{producto.nombre}}</td>
+                                    <td >{{producto.pvp}} €</td>
+                                    <td class="text-right">{{producto.importe}} €</td>
+                                    
+                                </tr>
+                          </tbody>
+                         
+                      </table>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-lg-12 col-md-12- col-sm-12 col-xs-12 text-right">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+              </div>
+              </form>
+
+          </div>
+
+          <div class="modal-footer">            
+            <button type="button" class="btn btn-default" (click)="BtnCancelar_Click()" >Cancelar</button>
+          </div>
+        
+      </div>
+  </div>
+</div>

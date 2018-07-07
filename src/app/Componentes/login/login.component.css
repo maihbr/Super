@@ -1,0 +1,14 @@
+.login{
+  background:#F5F5F5;
+  border:9px double;
+  border-color: rgba(255,255,255,.9);  
+}
+
+.login .ico-user{
+  font-size:80px;
+  color: rgba(0,0,0,.3);		  
+  width:100%; 
+  padding-top: 5px;
+  padding-bottom: 0.6em;		 
+  text-align: center;			
+}

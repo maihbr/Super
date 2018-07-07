@@ -1,0 +1,100 @@
+	<div class="row" [ngClass]={mostrar:_MostrarListado,ocultar:!_MostrarListado}>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<form #userForm="ngForm" method="post" (ngSubmit)="onSubmit(userForm.value)" >
+						<div class="panel panel-default">
+							
+							<div class="panel-heading">
+								<h4 class="text-primary">Buscador Productos</h4>
+							</div>
+						
+							<div class="panel-body">
+						
+								<!-- -->
+								
+								<div class="row">
+																
+										<!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+											<div class="form-group">	                           						
+												<select class="form-control" name="IdCategoria" [ngModel]="IdCategoria"
+												(change)="cambio($event)" >							
+													<option *ngFor="let categoria of _categorias" 
+															[value]="categoria.id">
+														{{categoria.nombre}}
+													</option>
+												</select>
+											</div>  
+										</div>-->
+						
+						
+										<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+											<div class="form-group">					
+													<input class="form-control" type="text" id="HtmlTxtProducto"  name="HtmlTxtProducto"
+													[(ngModel)]="HtmlTxtProducto" placeholder="Teclee Id / Producto">
+												</div>  
+										</div>		
+								</div>
+								
+								<!-- -->
+								
+							</div>
+						
+							<!--<div class="panel-footer">
+								<input type="submit" id="HtmlBtnAlta" class="btn btn-primary" value="Buscar" />
+							</div>-->
+						</div>
+				</form>
+						
+				<div class="panel panel-default">
+					
+					<div class="panel-heading">
+						<h4 class="text-primary">Listado de Productos</h4>
+					</div>
+				
+					<div class="panel-body">
+				
+						<!-- -->
+						<div class="row">
+							<div class="col-lg 12 col-md-12 col-sm-12 col-xs-12">	
+								<div class="table-responsive">	
+									<table class="table table-hover">
+										<thead>											
+											<th class="text-center">Producto</th>
+											<th>Categoría</th>
+											<th>P.V.P (€)</th>	
+																					
+										</thead>
+				
+										<tbody>							
+											<tr *ngFor="let producto of _productos|pipeProductos:HtmlTxtProducto;let i=index" (click)="EditRow_Click(producto.id)">																						
+												<td>{{producto.id}} - {{producto.nombre}}</td>
+												<td>{{producto.id_categoria.nombre}}</td>
+												<td>{{producto.pvp}}€ <span *ngIf="producto.fresco==true">/Kg</span></td>
+												
+											</tr>
+										</tbody>
+				
+									</table>		
+								</div>
+							</div>
+						</div>
+						<!-- -->
+				
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<ul id="paginacion"  class="pagination">									
+									<li *ngFor="let i of _TotalPaginas" ><span (click)="Click_Pagination($event)">{{i}}</span></li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+				
+					<div class="panel-footer">
+						<button id="HtmlBtnAlta" class="btn btn-primary" (click)="MostarFormulario()">Alta Producto</button>
+					</div>
+				</div>
+								
+		</div>
+	</div>
+
+	<app-det-producto (EventActualizarGrid)="ActualizarGrid($event)"></app-det-producto>

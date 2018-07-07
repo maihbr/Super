@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="alert alert-info text-center">{{_strMensaje}}</div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h3 class="text-primary">Borrar {{_numProductos}} Productos</h3><hr>      
+      <button type="button"  class="btn btn-primary" (click)="LimpiarProductos()">
+        Pulse en boton para eliminar los productos
+      </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <hr><h3 class="text-primary">Borrar {{_numCategorias}} categorias</h3><hr>  
+      <button type="button" class="btn btn-primary" (click)="LimpiarCategorias()">
+        Pulse en boton para eliminar los categorias
+      </button>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+        <hr>
+        <button class="btn btn-primary" (click)="setIdCategoria()">Establecer id categoria</button>
+    </div>
+</div>
+
+<br><br>
+<div class="row">
+  <div class="col-lg-4">
+      <select class="form-control" [(ngModel)]="MyCombo">
+          <option *ngFor="let dia of Dias" [value]="dia.id">{{dia.nombre}}</option>
+        </select>
+  </div>
+
+  <div class="col-lg-2">
+        <button class="btn btn-primary" (click)="Aceptar_Click()">Aceptar</button>
+  </div>
+
+  <div class="col-lg-2">
+    <button class="btn btn-primary" (click)="Establecer_Click()">Establecer valor por defecto en el combo</button>
+  </div>
+
+  <div class="col-lg-2">
+    <button class="btn btn-primary" (click)="BorrarDB()">Eliminar DB</button>
+  </div>
+
+</div>

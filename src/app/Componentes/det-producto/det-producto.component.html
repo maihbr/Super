@@ -1,0 +1,91 @@
+<form #formAlta="ngForm" (ngSubmit)="onSubmit(formAlta.value)">
+<div class="panel panel-default" [ngClass]="{mostrar:_cssMostrar,ocultar:_cssOcultar}">
+	<div class="panel-heading"><h4 class="text-primary">{{_TituloPanel}}</h4></div>
+
+	
+	<div class="panel-body">
+
+		<div class="row">
+			
+			<!--Col 01 -->
+			<div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Id</label>
+					<input type="text" id="HtmlTxtId" name="HtmlTxtId"
+					 [disabled]="_cssActivarHtmlTxtId"
+					 class="form-control" [(ngModel)]="HtmlTxtId" />
+				</div>			
+			</div>
+			<!--Col-01 -->
+
+			<!--Col 02 -->
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Nombre</label>
+					<input type="text" id="HtmlTxtNombre" name="HtmlTxtNombre" class="form-control" [(ngModel)]="HtmlTxtNombre" />
+				</div>			
+			</div>
+			<!--Col-02 -->
+
+			<!--Col 03 -->
+			<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Categoria</label>
+					<select  id="HtmlCboCategoria" name="HtmlCboCategoria" class="form-control" [compareWith]="byCategoria"
+							 [(ngModel)]="_CatSelected">
+						<option *ngFor="let categoria of _Categorias"
+								[ngValue]="categoria" >{{categoria.nombre}}</option>
+					</select>
+				</div>			
+			</div>
+			<!--Col-03 -->
+
+			<!--Col 04 -->
+			<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">I.V.A %</label>
+					<input type="text" id="HtmlTxtIva" name="HtmlTxtIva" class="form-control" [(ngModel)]="HtmlTxtIva" />
+				</div>			
+			</div>
+			<!--Col-04 -->
+
+			<!--Col 05 -->
+			<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">P.V.P (€)</label>
+					<input type="text" id="HtmlTxtPvp" name="HtmlTxtPvp" class="form-control" [(ngModel)]="HtmlTxtPvp" />
+				</div>			
+			</div>
+			<!--Col-05 -->
+
+			<!--Col 06 -->
+			<div class="col-lg-2 col-md-1 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Producto fresco</label>
+					<div class="checkbox text-center" >
+						<input type="checkbox" name="HtmlchkFreco" [(ngModel)]="HtmlchkFreco" />	
+					</div>									
+				</div>
+			</div>
+			<!--Col 06 -->
+
+		</div>
+
+
+	</div>
+
+	<div class="panel-footer">
+		<input type="submit" id="HtmlBtnGuardar" name="HtmlBtnGuardar" class="btn btn-primary" value="Guardar" />
+		<button type="button" id="HtmlBtnEliminar" name="HtmlBtnEliminar" class="btn btn-danger" 
+			[ngClass]="{mostrar:_cssMostrarBtnEliminar,ocultar:_cssOcultarBtnEliminar}" (click)="Eliminar_Click()">Eliminar</button>
+		<button type="button" id="HtmlBtnCancelar" name="HtmlBtnCancelar" class="btn btn-default" (click)="Cancelar_Click()">Cancelar</button>
+	</div>
+	
+</div>
+</form>
+
+<app-comfirmar #comfirmar
+(onCancelar)="Cancelar_Confirmar($event)" 
+(onAceptar)="Aceptar_Confirmar($event)"></app-comfirmar>
+
+

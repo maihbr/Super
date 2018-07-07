@@ -1,0 +1,20 @@
+<div class="row" [ngClass]={mostrar:!_OcultarMsg,ocultar:_MostrarMsg}>
+	<div class="col-lg-6 col-lg-offset-3 col-md-6 col-sm-12 col-xs-12">
+		<div class="alert alert-info text-center">¿Desea importar los datos desde un fichero?</div>
+		<div class="text-center">
+			<input type="button" id="HtmlBtnImportar" value="importar" class="btn btn-primary" 
+			(click)="HtmlUpload.click()" />
+			<input type="file" id="HtmlUpload" #HtmlUpload (change)="importar($event)" />
+		</div>
+	</div>
+</div>
+
+<!-- [ngClass]={mostrar:_MostrarMsg,ocultar:_OcultarMsg}-->
+<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-sm-12 col-xs-12">
+			<div class="alert alert-info text-center">{{_Mensaje}}</div>
+			<div class="text-center">				
+				<button class="btn btn-primary" (click)="btnVolver_Click()">Volver</button>
+			</div>
+		</div>
+</div>

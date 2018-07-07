@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col lg-12">
+     <input type="button" name="btnActualizarCate" class="btn btn-primary" value="Actualizar Categoria" (click)="btnActualizarCate_Click()" >
+     <input type="button" name="btnAddFresco" class="btn btn-primary" value="Añadir campo fresco" (click)="btnAddFresco_Click()" >
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col xs-12">
+      <div class="divScroll" (scroll)="onScroll($event)">
+          
+         <table class="table table-hover" id="HtmlTabla">
+           <thead>
+              <tr>
+                <th>Cantidad</th>
+                <th>Nombre</th>
+                <th>P.V.P</th>
+                <th>Importe</th>
+                <th>&nbsp;</th>
+              </tr>
+           </thead>
+
+           <tbody>
+
+              <tr>
+                <td><input type="number" id="HtmlTxtCantidad"   /></td>
+                <td>Pan de model Froiz</td>
+                <td>0,79</td>
+                <td>0,79</td>
+                <th>
+                  
+                </th>
+              </tr>
+
+              <tr>
+                  <td><input type="number" id="HtmlTxtCantidad"  /></td>
+                  <td>Pan de model Froiz</td>
+                  <td>0,79</td>
+                  <td>0,79</td>
+              </tr>
+
+              <tr>
+                <td><input type="number" id="HtmlTxtCantidad"  /></td>
+                <td>Pan de model Froiz</td>
+                <td>0,79</td>
+                <td>0,79</td>
+              </tr>
+
+              <tr>
+                  <td><input type="number" id="HtmlTxtCantidad"  /></td>
+                  <td>Pan de model Froiz</td>
+                  <td>0,79</td>
+                  <td>0,79</td>
+              </tr>
+  
+              <tr>
+                  <td><input type="number" id="HtmlTxtCantidad"  /></td>
+                  <td>Pan de model Froiz</td>
+                  <td>0,79</td>
+                  <td>0,79</td>
+              </tr>
+
+              <tr>
+                <td><input type="number" id="HtmlTxtCantidad"  /></td>
+                <td>Pan de model Froiz</td>
+                <td>0,79</td>
+                <td>0,79</td>
+              </tr>
+
+
+           </tbody>
+         </table>
+          
+       
+         
+         
+      </div>
+  </div>
+</div>
+
+<div class="row">
+    <form #formAlta="ngForm" (ngSubmit)="onSubmitAlta(formAlta.value)">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+              <h4 class="text-primary">Nuevo Pedido</h4>
+          </div>
+
+          <div class="panel-body">         
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="form-group">          
+                      <label>Id Pedido</label>
+                      <input type="text" class="form-control" id="HtmlIdPedido" name="HtmlIdPedido" [(ngModel)]="HtmlIdPedido" />          
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12">
+                <div class="form-group">            
+                  <label>Fecha</label>
+                  <input type="date" class="form-control" id="HtmlFepedido" name="HtmlFepedido" [(ngModel)]="HtmlFepedido" />           
+                </div>
+              </div>
+
+              <!--Col 03 -->
+              <div class="col-lg-3 col-md-6 col-sm-3 col-xs-12">
+                <div class="form-group">
+                  <label class="label-form">Categoria</label>
+                  <select name="HtmlCboCategoria" id="HtmlCboCategoria" class="form-control" [(ngModel)]="HtmlCboCategoria">
+                    <option *ngFor="let categoria of _Categorias"
+                            [ngValue]="categoria">{{categoria.nombre}}
+                    </option>
+                  </select>
+                </div>			
+              </div>
+              <!--Col-03 -->
+
+          </div>
+
+          <div class="panel-footer">
+            <button [disabled]="!formAlta.form.valid" type="submit"  name="HtmlBtnGuardar" class="btn btn-primary">Guardar</button>
+            <input type="button" id="HtmlBtnCancelar" class="btn btn-success" value="Cancelar"/>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+</div>

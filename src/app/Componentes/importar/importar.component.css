@@ -1,0 +1,6 @@
+input[type=file]{
+ margin-left: -2000px
+}
+
+.ocultar{display: none;}
+.mostar{display: block;}

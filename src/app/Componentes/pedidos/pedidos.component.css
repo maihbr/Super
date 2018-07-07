@@ -1,0 +1,13 @@
+.selected{
+    text-decoration:line-through;
+    background-color:red;
+    font-weight: bold;
+    color:white;
+}
+
+#resumen{
+    font-size: 1em;
+    background-color: #A9A9A9;   
+    color:white;
+    font-weight: bold; 
+}

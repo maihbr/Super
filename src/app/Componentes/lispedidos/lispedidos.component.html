@@ -1,0 +1,114 @@
+<div id="divLocalizador" [ngClass]="{mostrar:_cssMostrar,ocultar:_cssOcultar}">
+  
+  <div class="row">
+    <form #lisPedidos="ngForm" (ngSubmit)="onSubmit(lisPedidos.value)" >
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="text-primary">Buscador</h4>
+        </div>
+        <div class="panel-body">
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <label for="Htmlfeinicio">Fecha Inicio</label>
+              <input type="date" name="Htmlfeinicio" id="Htmlfeinicio" class="form-control" [(ngModel)]="Htmlfeinicio" />
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <label for="Htmlfefin">Fecha fin</label>
+              <input type="date" name="Htmlfefin" id="Htmlfefin" class="form-control" [(ngModel)]="Htmlfefin" />
+            </div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <input type="submit" id="HtmlBtnBuscar" class="btn btn-primary" value="Buscar" />
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h4 class="text-primary">Pedidos</h4>
+      </div>
+      <div class="panel-body">
+
+        <div class="table-responsive">
+
+          <div class="text-center" [ngClass]="{mostrar:!_cssMostrarGv,ocultar:!_cssOcultarGv}">Actualmente no hay pedidos</div>
+
+          <table class="table table-hover" [ngClass]="{mostrar:_cssMostrarGv,ocultar:_cssOcultarGv}">
+           
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Nº Pedido</th>
+                <th>Nº Productos</th>
+                <th>Importe Total</th>              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of _Pedidos" (click)="EditPedido_Click(item)">
+                <td>{{item.fecha}}</td>
+                <td>{{item.idPedido}}</td>
+                <td>{{item.productos.length}}</td>
+                <td>{{item.importe|number:'2.2'}}&nbsp;€</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+      <div class="panel-footer">
+          <input type="button" id="HtmlBtnNuevo" class="btn btn-primary" value="Crear Pedido" (click)="BtnNuevo_Click()" />
+      </div>
+  </div>
+
+</div>
+
+
+<div  [ngClass]="{mostrar:!_cssMostrar,ocultar:!_cssOcultar}" class="row">
+    <form #formAlta="ngForm" (ngSubmit)="onSubmitAlta(formAlta.value)">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+              <h4 class="text-primary">Nuevo Pedido</h4>
+          </div>
+
+          <div class="panel-body">         
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="form-group">          
+                      <label>Id Pedido</label>
+                      <input type="text" class="form-control" id="HtmlIdPedido" name="HtmlIdPedido" [(ngModel)]="HtmlIdPedido" />          
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="form-group">            
+                  <label>Fecha</label>
+                  <input type="date" class="form-control" id="HtmlFepedido" name="HtmlFepedido" [(ngModel)]="HtmlFepedido" />           
+                </div>
+              </div>
+
+          </div>
+
+          <div class="panel-footer">
+            <button type="submit" name="HtmlBtnGuardar" class="btn btn-primary">Guardar</button>
+            <input type="button" id="HtmlBtnCancelar" class="btn btn-success" value="Cancelar" (click)="BtnCancelar_Click()"/>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+</div>
+

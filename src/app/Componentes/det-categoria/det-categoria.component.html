@@ -1,0 +1,42 @@
+<div class="panel panel-default" [ngClass]="{mostrar:Mostrar,ocultar:Ocultar}">
+	<div class="panel-heading"><h4 class="text-primary">{{TituloPanel}}</h4></div>
+
+	<div class="panel-body">
+
+		<div class="row">
+			
+			<!--Col 01 -->
+			<div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Id</label>
+					<input type="text" name="Id" [disabled]="TxtIdDisabled" [(ngModel)]="Id" class="form-control" />
+				</div>			
+			</div>
+			<!--Col-01 -->
+
+			<!--Col 02 -->
+			<div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="label-form">Nombre</label>
+					<input type="text" name="Nombre" [(ngModel)]="Nombre" #nombre class="form-control" />
+				</div>			
+			</div>
+			<!--Col-02 -->
+		
+		</div>
+
+
+	</div>
+
+	<div class="panel-footer">
+		<button type="button" class="btn btn-primary" (click)="Guardar()">Guardar</button>
+		<button type="button" [ngClass]="{visible:BtnVisible,novisible:BtnOcultar}" class="btn btn-danger"
+		 (click)="Eliminar()">Eliminar</button>
+		<button type="button" class="btn btn-default" (click)="Cancelar()">Cancelar</button>
+	</div>
+
+</div>
+
+<app-comfirmar #comfirmar
+	(onCancelar)="Cancelar_Confirmar($event)" 
+	(onAceptar)="Aceptar_Confirmar($event)"></app-comfirmar>
