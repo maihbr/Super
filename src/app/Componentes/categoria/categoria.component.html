@@ -5,20 +5,26 @@
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<ul class="list-unstyled">
-				<li class="cabecera">Lista Categorias</li>
+				<li class="cabecera bg-primary">Listass Categorias</li>
 				<li class="item-lista enlace"  *ngFor="let categoria of _categorias" (click)="RowEdit_Click(categoria)">						
-					<div class="contenedor">
+					
 						<div class="descripcion">
-							<span class="bloque text-primary "><strong>{{categoria.id}} - {{categoria.nombre}}</strong></span>
-							<!--<span clss="bloque">P.V.P : 10€ Kg / I.V.A : 10%</span>-->
+							
+								<div class="info">
+										<span class="text-primary "><strong>{{categoria.id}} - {{categoria.nombre}}</strong></span>			
+										<div class="bloque">P.V.P: 12,87€ / I.V.A: 10%</div>		
+								</div>
+
+							<div class="enlaces">
+									<span class="glyphicon glyphicon-chevron-right text-primary"></span>							
+							</div>
+
 						</div>
 
-						<div class="enlaces">
-							<span class="glyphicon glyphicon-chevron-right text-primary"></span>							
-						</div>
-					</div>			
+						
+							
 				</li>
-				<li class="boton borde">
+				<li class="boton borde bg-primary ">
 					<span (click)="MostrarFormAlta()">Añadir Categoria...</span>
 				</li>
 			</ul>

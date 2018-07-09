@@ -17,49 +17,44 @@
           <div class="modal-body">
               <div class="text-center">{{Mensaje}}</div>
               
-              <div class="row">
-                 
-
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <input type="search" name="HtmlProducto" class="form-control" placeholder="Id / Producto" [(ngModel)]="HtmlProducto" />
-                  </div>    
-                 
+              <div class="row" style="margin-bottom:1em">                
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class='input-group'>
+                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search text-primary"></span>
+                                </span>
+                            <input type="search" name="HtmlProducto" class="form-control" placeholder="Id / Producto" [(ngModel)]="HtmlProducto" />
+                        </div>                      
+                  </div>                     
               </div>
 
               <form #listProd="ngForm" (ngSubmit)="onSubmit(listProd.value)" >
-              <div class="row">
-                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">                                        
-                      <table class="table">
-                          <thead>
-                              <tr>                                  
-                                  <th>Cantidad</th>
-                                  <th>Producto</th>
-                                  <th>P.V.P</th>
-                                  <th>Importe</th>
-                                  <th>&nbsp;</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                               <!-- |pipeProductos:HtmlProducto -->
-                                <tr *ngFor="let producto of _Productos|pipeProductos:HtmlProducto;let i=index">                                    
-                                    <td><input type="number" name="pro_{{producto.id}}"  step="1" min="0" max="99"  class="text-center"
-                                             (input)="onInput($event)"  (value)="producto.cantidad" [attr.data-id]="producto.id"  #cantidad [(ngModel)]="producto.cantidad" ></td>
-                                    <td>{{producto.id}} - {{producto.nombre}}</td>
-                                    <td >{{producto.pvp}} €</td>
-                                    <td class="text-right">{{producto.importe}} €</td>
-                                    
-                                </tr>
-                          </tbody>
-                         
-                      </table>
-                  </div>
-              </div>
 
-              <div class="row">
-                  <div class="col-lg-12 col-md-12- col-sm-12 col-xs-12 text-right">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                  </div>
-              </div>
+              <ul class="list-unstyled">
+				
+                    <li class="item-lista" *ngFor="let producto of _Productos|pipeProductos:HtmlProducto;let i=index" >						
+                        
+                            <div class="descripcion">
+                                    <div class="cantidad">														
+                                            <input type="number" name="pro_{{producto.id}}"  step="1" min="0" max="99"  class="form-control text-center"
+                                            (input)="onInput($event)"  (value)="producto.cantidad" [attr.data-id]="producto.id"  #cantidad [(ngModel)]="producto.cantidad" />
+                                    </div>
+    
+                                    <div class="info">
+                                        <span class="text-primary "><strong>{{producto.id}} - {{producto.nombre}}</strong></span>			
+                                       <div class="bloque">P.V.P : {{producto.pvp}}€<span *ngIf="producto.fresco==true">/Kg</span>
+                                            / I.V.A : {{producto.iva}}%
+                                        </div>
+                                    </div>
+    
+                                    <div class="enlaces text-primary text-md">                                        
+                                        {{producto.importe}} €
+                                    </div>
+                            </div>													
+                    </li>				
+                </ul>
+
+
               </form>
 
           </div>
